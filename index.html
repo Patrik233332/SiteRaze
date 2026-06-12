@@ -13,7 +13,7 @@
 
         body {
             background: linear-gradient(135deg, #0b0f1a 0%, #0a0e17 100%);
-            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
             min-height: 100vh;
             padding: 50px 24px;
             display: flex;
@@ -33,7 +33,7 @@
             display: none;
         }
 
-        /* ---------- ГЛАВНАЯ С КИТАМИ ---------- */
+        /* ---------- ГЛАВНАЯ ---------- */
         .header {
             text-align: center;
             margin-bottom: 55px;
@@ -337,15 +337,15 @@
 <body>
 
 <div class="app-container">
-    <!-- ГЛАВНАЯ СТРАНИЦА (киты) -->
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
     <div id="mainPage" class="page">
         <div class="header">
             <h1>⚡ Unturned | RAZE</h1>
             <p>Выбери набор привилегий</p>
         </div>
         <div class="cards-grid">
-            <!-- LITE 79₽ -->
-            <div class="donate-card card-lite" data-kit="Lite" data-price="79">
+            <!-- LITE -->
+            <div class="donate-card card-lite" data-kit="Lite" data-price="79" data-group="Lite" data-kits='["lite"]'>
                 <div class="kit-badge">LITE</div>
                 <div class="price">79 <span>₽</span></div>
                 <ul class="features">
@@ -354,48 +354,42 @@
                 </ul>
                 <div class="btn-like">💰 Купить LITE →</div>
             </div>
-            <!-- PREMIUM 149₽ -->
-            <div class="donate-card card-premium" data-kit="Premium" data-price="149">
+            <!-- PREMIUM -->
+            <div class="donate-card card-premium" data-kit="Premium" data-price="149" data-group="Premium" data-kits='["premium","lite"]'>
                 <div class="kit-badge">PREMIUM</div>
                 <div class="price">149 <span>₽</span></div>
                 <ul class="features">
                     <li>🎁 Команда <strong>/kit premium</strong></li>
                     <li>🏷️ Префикс в чате <strong>[Premium]</strong></li>
                 </ul>
-                <div class="subkits-note">
-                    🔓 Включает <strong>/kit lite</strong> (подкит)
-                </div>
+                <div class="subkits-note">🔓 Включает <strong>/kit lite</strong> (подкит)</div>
                 <div class="btn-like">💎 Купить PREMIUM →</div>
             </div>
-            <!-- IMMORTAL 349₽ -->
-            <div class="donate-card card-immortal" data-kit="Immortal" data-price="349">
+            <!-- IMMORTAL -->
+            <div class="donate-card card-immortal" data-kit="Immortal" data-price="349" data-group="Immortal" data-kits='["immortal","premium","lite"]'>
                 <div class="kit-badge">IMMORTAL</div>
                 <div class="price">349 <span>₽</span></div>
                 <ul class="features">
                     <li>👑 Команда <strong>/kit immortal</strong></li>
                     <li>🏷️ Префикс в чате <strong>[Immortal]</strong></li>
                 </ul>
-                <div class="subkits-note">
-                    🔓 Включает подкиты: <strong>/kit premium</strong> + <strong>/kit lite</strong>
-                </div>
+                <div class="subkits-note">🔓 Включает <strong>/kit premium + /kit lite</strong></div>
                 <div class="btn-like">🔥 Купить IMMORTAL →</div>
             </div>
         </div>
-        <div class="footer-note">
-            💎 Нажми на карточку — выбери срок и введи Steam64 ID
-        </div>
+        <div class="footer-note">💎 Нажми на карточку — выбери срок, введи Steam64 ID и получи привилегию</div>
     </div>
 
-    <!-- СТРАНИЦА ОФОРМЛЕНИЯ (выбор срока / SteamID) -->
+    <!-- СТРАНИЦА ОФОРМЛЕНИЯ -->
     <div id="checkoutPage" class="page hidden">
         <div class="checkout-card">
             <div class="back-link" id="backToMainBtn">← Назад к китам</div>
             <div class="checkout-kit-info">
                 <div class="checkout-kit-name" id="checkoutKitName">Lite</div>
-                <div class="checkout-kit-price" id="checkoutKitBasePrice">Базовая цена за 1 месяц: 79 ₽</div>
+                <div class="checkout-kit-price" id="checkoutKitBasePrice">Базовая цена: 79 ₽ / месяц</div>
             </div>
 
-            <div class="section-title">📆 Срок привилегии (месяцев)</div>
+            <div class="section-title">📆 Срок привилегии</div>
             <div class="duration-grid" id="durationGrid"></div>
 
             <div class="steam-field">
@@ -412,20 +406,27 @@
             <div id="checkoutError" class="error-msg"></div>
         </div>
         <div class="footer-note" style="margin-top: 30px;">
-            🛡️ После оплаты привилегия выдастся автоматически на указанный Steam64 ID
+            🛡️ После оплаты привилегия выдастся автоматически
         </div>
     </div>
 </div>
 
 <script>
-    // Цены китов
-    const kits = {
-        'Lite': { basePrice: 79 },
-        'Premium': { basePrice: 149 },
-        'Immortal': { basePrice: 349 }
+    // ==================== НАСТРОЙКИ ====================
+    // АДРЕС ТВОЕГО PYTHON-СКРИПТА (моста)
+    // Если сайт и скрипт на одном компьютере:
+    const API_URL = 'http://localhost:8080/add';
+    
+    // Если скрипт на сервере с другим IP:
+    // const API_URL = 'http://192.168.1.100:8080/add';
+    
+    // Данные китов
+    const kitsData = {
+        'Lite': { basePrice: 79, group: 'Lite' },
+        'Premium': { basePrice: 149, group: 'Premium' },
+        'Immortal': { basePrice: 349, group: 'Immortal' }
     };
 
-    // Варианты сроков: количество месяцев и скидка
     const durations = [
         { months: 1, multiplier: 1.00, label: '1 месяц' },
         { months: 3, multiplier: 0.95, label: '3 месяца' },
@@ -435,6 +436,7 @@
 
     let currentKit = 'Lite';
     let currentBasePrice = 79;
+    let currentGroup = 'Lite';
     let selectedDuration = durations[0];
 
     // DOM элементы
@@ -496,13 +498,59 @@
         return true;
     }
 
-    function openCheckout(kitName, price) {
+    // ОТПРАВКА ЗАПРОСА НА СЕРВЕР
+    async function sendToServer(steamId, kitName, groupName, months, amount) {
+        try {
+            console.log('📤 Отправка запроса:', { steamId, kitName, groupName, months, amount });
+            
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    steamId: steamId,
+                    kit: kitName,
+                    group: groupName,
+                    months: months,
+                    amount: amount
+                })
+            });
+            
+            const result = await response.text();
+            console.log('📥 Ответ сервера:', response.status, result);
+            
+            if (response.ok) {
+                alert(`✅ УСПЕШНО!\n\nИгрок ${steamId} добавлен в группу ${groupName}\nСрок: ${months} месяц(ев)\nСумма: ${amount} ₽\n\nТеперь игроку доступны киты: ${getKitsForKit(kitName)}`);
+                // Возвращаемся на главную
+                mainPage.classList.remove('hidden');
+                checkoutPage.classList.add('hidden');
+            } else {
+                throw new Error(result || 'Неизвестная ошибка сервера');
+            }
+        } catch (error) {
+            console.error('❌ Ошибка:', error);
+            showError(`❌ Не удалось соединиться с сервером!\n\nУбедись, что:\n1. Python-скрипт запущен (python donation_bridge.py)\n2. Адрес API_URL правильный (сейчас: ${API_URL})\n3. Сервер Unturned запущен и RCON включён\n\nОшибка: ${error.message}`);
+        }
+    }
+    
+    function getKitsForKit(kitName) {
+        switch(kitName) {
+            case 'Lite': return '/kit lite';
+            case 'Premium': return '/kit premium + /kit lite';
+            case 'Immortal': return '/kit immortal + /kit premium + /kit lite';
+            default: return '/kit lite';
+        }
+    }
+
+    function openCheckout(kitName, price, group) {
         currentKit = kitName;
         currentBasePrice = price;
+        currentGroup = group;
         selectedDuration = durations[0];
 
         checkoutKitNameSpan.innerText = currentKit;
-        checkoutKitBasePriceSpan.innerText = `Базовая цена за 1 месяц: ${currentBasePrice} ₽`;
+        checkoutKitBasePriceSpan.innerText = `Базовая цена: ${currentBasePrice} ₽ / месяц`;
         renderDurations();
         updateTotalPrice();
         steamIdInput.value = '';
@@ -517,8 +565,9 @@
         card.addEventListener('click', (e) => {
             const kit = card.getAttribute('data-kit');
             const price = parseInt(card.getAttribute('data-price'), 10);
+            const group = card.getAttribute('data-group');
             if (kit && !isNaN(price)) {
-                openCheckout(kit, price);
+                openCheckout(kit, price, group);
             }
         });
     });
@@ -529,7 +578,7 @@
         clearError();
     });
 
-    confirmBtn.addEventListener('click', () => {
+    confirmBtn.addEventListener('click', async () => {
         const steamId = steamIdInput.value.trim();
         if (!validateSteamId(steamId)) {
             showError('❌ Укажите корректный Steam64 ID (17 цифр, начинается на 7656)');
@@ -539,17 +588,20 @@
             showError('❌ Выберите срок привилегии');
             return;
         }
+        
         const finalAmount = Math.floor(currentBasePrice * selectedDuration.months * selectedDuration.multiplier);
         
-        // ЗАМЕНИТЕ ЭТУ ССЫЛКУ НА РЕАЛЬНУЮ ОТ LAVA.TOP / DONATIONALERTS
-        const fakePaymentUrl = `https://lava.top/yourproject?kit=${currentKit}&months=${selectedDuration.months}&price=${finalAmount}&steamid=${steamId}`;
+        // Блокируем кнопку на время отправки
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = '⏳ Обработка...';
         
-        alert(`⚡ Переход к оплате\n\nКит: ${currentKit}\nСрок: ${selectedDuration.months} мес\nСумма: ${finalAmount} ₽\nSteam64: ${steamId}\n\n🔗 Платёжная ссылка: ${fakePaymentUrl}\n\n👆 Замените ссылку в коде на настоящую`);
+        await sendToServer(steamId, currentKit, currentGroup, selectedDuration.months, finalAmount);
         
-        // Раскомментировать для редиректа:
-        // window.location.href = fakePaymentUrl;
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = '💸 Перейти к оплате';
     });
 
+    // Старт
     mainPage.classList.remove('hidden');
     checkoutPage.classList.add('hidden');
 </script>
