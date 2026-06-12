@@ -65,19 +65,19 @@
             border-color: #facc15;
         }
 
-        /* Цвета границ */
-        .card-sheriff { border-top: 5px solid #cd853f; }
-        .card-sniper { border-top: 5px solid #2ecc71; }
-        .card-deadzone { border-top: 5px solid #8e44ad; }
+        /* Цвета границ и заголовков */
+        .card-sheriff { border-top: 5px solid #3b82f6; }
+        .card-sniper { border-top: 5px solid #4a4a4a; }
+        .card-deadzone { border-top: 5px solid #ef4444; }
 
         .card-title {
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 12px;
         }
-        .card-sheriff .card-title { color: #cd853f; }
-        .card-sniper .card-title { color: #2ecc71; }
-        .card-deadzone .card-title { color: #8e44ad; }
+        .card-sheriff .card-title { color: #3b82f6; }
+        .card-sniper .card-title { color: #a0a0a0; }
+        .card-deadzone .card-title { color: #ef4444; }
 
         .price {
             font-size: 2.4rem;
@@ -153,9 +153,9 @@
             transition: 0.2s;
             margin-top: 10px;
         }
-        .card-sheriff .pay-btn { background: #8b5a2b; }
-        .card-sniper .pay-btn { background: #1f8a4c; }
-        .card-deadzone .pay-btn { background: #6c3483; }
+        .card-sheriff .pay-btn { background: #1e3a8a; }
+        .card-sniper .pay-btn { background: #2a2a2a; }
+        .card-deadzone .pay-btn { background: #7f1a1a; }
         .pay-btn:hover { opacity: 0.85; transform: scale(0.98); }
 
         .modal {
@@ -218,11 +218,11 @@
         </div>
 
         <div class="cards-grid">
-            <!-- SHERIFF -->
+            <!-- SHERIFF — СИНИЙ -->
             <div class="card card-sheriff">
                 <div class="card-title">SHERIFF</div>
                 <div class="price">79 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>6 часов</strong></div>
+                <div class="cooldown">⏱️ КД: <strong>3 часа</strong></div>
                 <ul class="features">
                     <li>🎁 Команда <strong>/kit sheriff</strong></li>
                     <li>🏷️ Префикс <strong>[Sheriff]</strong></li>
@@ -231,31 +231,31 @@
                 <button class="pay-btn" data-kit="Sheriff" data-price="79">⭐ Купить SHERIFF</button>
             </div>
 
-            <!-- SNIPER -->
+            <!-- SNIPER — ЧЁРНЫЙ -->
             <div class="card card-sniper">
                 <div class="card-title">SNIPER</div>
                 <div class="price">149 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>12 часов</strong></div>
+                <div class="cooldown">⏱️ КД: <strong>6 часов</strong></div>
                 <ul class="features">
                     <li>🎁 Команда <strong>/kit sniper</strong></li>
                     <li>🏷️ Префикс <strong>[Sniper]</strong></li>
                     <li>🎯 Снайперская винтовка</li>
                 </ul>
-                <div class="subkits">🔓 Включает <strong>/kit sheriff</strong> (КД 6ч)</div>
+                <div class="subkits">🔓 Включает <strong>/kit sheriff</strong> (КД 3ч)</div>
                 <button class="pay-btn" data-kit="Sniper" data-price="149">🎯 Купить SNIPER</button>
             </div>
 
-            <!-- DEADZONE -->
+            <!-- DEADZONE — КРАСНЫЙ -->
             <div class="card card-deadzone">
                 <div class="card-title">DEADZONE</div>
                 <div class="price">300 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>24 часа</strong></div>
+                <div class="cooldown">⏱️ КД: <strong>12 часов</strong></div>
                 <ul class="features">
                     <li>🎁 Команда <strong>/kit deadzone</strong></li>
                     <li>🏷️ Префикс <strong>[DeadZone]</strong></li>
                     <li>💀 Легендарный набор</li>
                 </ul>
-                <div class="subkits">🔓 Включает <strong>/kit sniper</strong> (12ч) + <strong>/kit sheriff</strong> (6ч)</div>
+                <div class="subkits">🔓 Включает <strong>/kit sniper</strong> (6ч) + <strong>/kit sheriff</strong> (3ч)</div>
                 <button class="pay-btn" data-kit="DeadZone" data-price="300">💀 Купить DEADZONE</button>
             </div>
         </div>
