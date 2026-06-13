@@ -69,7 +69,8 @@
         .card-sniper-lite { border-top: 5px solid #10b981; }
         .card-sniper-pro { border-top: 5px solid #a855f7; }
         .card-raid-lite { border-top: 5px solid #f97316; }
-        .card-raid-pro { border-top: 5px solid #ef4444; }
+        .card-raid-pro { border-top: 5px solid #dc2626; }
+        .card-deadzone { border-top: 5px solid #991b1b; }
 
         .card-title {
             font-size: 2rem;
@@ -81,6 +82,7 @@
         .card-sniper-pro .card-title { color: #a855f7; }
         .card-raid-lite .card-title { color: #f97316; }
         .card-raid-pro .card-title { color: #ef4444; }
+        .card-deadzone .card-title { color: #b91c1c; }
 
         .price {
             font-size: 2.4rem;
@@ -160,7 +162,8 @@
         .card-sniper-lite .pay-btn { background: #0e5e42; }
         .card-sniper-pro .pay-btn { background: #6b21a5; }
         .card-raid-lite .pay-btn { background: #9a3412; }
-        .card-raid-pro .pay-btn { background: #7f1a1a; }
+        .card-raid-pro .pay-btn { background: #dc2626; }
+        .card-deadzone .pay-btn { background: #7f1a1a; }
         .pay-btn:hover { opacity: 0.85; transform: scale(0.98); }
 
         .modal {
@@ -266,7 +269,7 @@
                 <button class="pay-btn" data-kit="Sniper Pro" data-kits-list="/kit sniperpro + /kit sniperlite" data-price="249">🔥 Купить SNIPER PRO</button>
             </div>
 
-            <!-- RAID LITE — ОРАНЖЕВЫЙ (КД 8 ЧАСОВ) -->
+            <!-- RAID LITE — ОРАНЖЕВЫЙ -->
             <div class="card card-raid-lite">
                 <div class="card-title">RAID LITE</div>
                 <div class="price">199 <span>₽</span></div>
@@ -274,14 +277,14 @@
                 <ul class="features">
                     <li>🎁 Команда <strong>/kit raidlite</strong></li>
                     <li>🏷️ Префикс <strong>[Raider]</strong></li>
-                    <li>🧨 Asset + Bisey + Взрывчатка</li>
+                    <li>🧨 Asset + Bisey + Double Grenade</li>
                     <li>🔨 Лёгкий штурм</li>
                 </ul>
                 <div class="subkits">❌ Не включает старшие наборы</div>
                 <button class="pay-btn" data-kit="RAID Lite" data-kits-list="/kit raidlite" data-price="199">🧨 Купить RAID LITE</button>
             </div>
 
-            <!-- RAID PRO — КРАСНЫЙ (КД 24 ЧАСА) -->
+            <!-- RAID PRO — КРАСНЫЙ (Hermes + 3 HE патрона) -->
             <div class="card card-raid-pro">
                 <div class="card-title">RAID PRO</div>
                 <div class="price">349 <span>₽</span></div>
@@ -289,11 +292,25 @@
                 <ul class="features">
                     <li>🎁 Команда <strong>/kit raidpro</strong></li>
                     <li>🏷️ Префикс <strong>[Destroyer]</strong></li>
-                    <li>💣 Hermes + Strike Calls + C4</li>
-                    <li>💀 Тяжелая артиллерия</li>
+                    <li>💣 <strong>Hermes + 3 HE патрона</strong></li>
+                    <li>🎯 Тяжелая артиллерия</li>
                 </ul>
                 <div class="subkits">🔓 Включает все возможности <strong>RAID LITE</strong></div>
                 <button class="pay-btn" data-kit="RAID Pro" data-kits-list="/kit raidpro + /kit raidlite" data-price="349">💀 Купить RAID PRO</button>
+            </div>
+
+            <!-- DEADZONE — БОРДОВЫЙ -->
+            <div class="card card-deadzone">
+                <div class="card-title">DEADZONE</div>
+                <div class="price">349 <span>₽</span></div>
+                <div class="cooldown">⏱️ КД: <strong>12 часов</strong></div>
+                <ul class="features">
+                    <li>🎁 Команда <strong>/kit deadzone</strong></li>
+                    <li>🏷️ Префикс <strong>[DeadZone]</strong></li>
+                    <li>💀 Легендарный набор</li>
+                </ul>
+                <div class="subkits">🔓 Включает <strong>SNIPER PRO + RAID PRO</strong></div>
+                <button class="pay-btn" data-kit="DeadZone" data-kits-list="/kit deadzone + /kit sniperpro + /kit sniperlite + /kit raidpro + /kit raidlite" data-price="349">💀 Купить DEADZONE</button>
             </div>
         </div>
 
