@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -65,10 +65,11 @@
             border-color: #facc15;
         }
 
-        /* Цвета границ */
         .card-sheriff { border-top: 5px solid #3b82f6; }
         .card-sniper { border-top: 5px solid #8e44ad; }
         .card-deadzone { border-top: 5px solid #ef4444; }
+        .card-sniper-lite { border-top: 5px solid #10b981; }
+        .card-sniper-pro { border-top: 5px solid #f97316; }
 
         .card-title {
             font-size: 2rem;
@@ -78,6 +79,8 @@
         .card-sheriff .card-title { color: #3b82f6; }
         .card-sniper .card-title { color: #a855f7; }
         .card-deadzone .card-title { color: #ef4444; }
+        .card-sniper-lite .card-title { color: #10b981; }
+        .card-sniper-pro .card-title { color: #f97316; }
 
         .price {
             font-size: 2.4rem;
@@ -156,6 +159,8 @@
         .card-sheriff .pay-btn { background: #1e3a8a; }
         .card-sniper .pay-btn { background: #6b21a5; }
         .card-deadzone .pay-btn { background: #7f1a1a; }
+        .card-sniper-lite .pay-btn { background: #0e5e42; }
+        .card-sniper-pro .pay-btn { background: #9a3412; }
         .pay-btn:hover { opacity: 0.85; transform: scale(0.98); }
 
         .modal {
@@ -218,6 +223,36 @@
         </div>
 
         <div class="cards-grid">
+            <!-- SNIPER LITE — ЗЕЛЁНЫЙ НОВЫЙ -->
+            <div class="card card-sniper-lite">
+                <div class="card-title">SNIPER LITE</div>
+                <div class="price">149 <span>₽</span></div>
+                <div class="cooldown">⏱️ КД: <strong>4 часа</strong></div>
+                <ul class="features">
+                    <li>🎁 Команда <strong>/kit sniperlite</strong></li>
+                    <li>🏷️ Префикс <strong>[Stalker]</strong></li>
+                    <li>🔭 Private + Легкая броня</li>
+                    <li>🌿 Тактический разведчик</li>
+                </ul>
+                <div class="subkits">❌ Не включает старшие наборы</div>
+                <button class="pay-btn" data-kit="Sniper Lite" data-kits-list="/kit sniperlite" data-price="149">🌿 Купить SNIPER LITE</button>
+            </div>
+
+            <!-- SNIPER PRO — ОРАНЖЕВЫЙ НОВЫЙ -->
+            <div class="card card-sniper-pro">
+                <div class="card-title">SNIPER PRO</div>
+                <div class="price">249 <span>₽</span></div>
+                <div class="cooldown">⏱️ КД: <strong>8 часов</strong></div>
+                <ul class="features">
+                    <li>🎁 Команда <strong>/kit sniperpro</strong></li>
+                    <li>🏷️ Префикс <strong>[Reaper]</strong></li>
+                    <li>💀 CSO-85 + RIOT броня</li>
+                    <li>🏆 Тяжелая артиллерия</li>
+                </ul>
+                <div class="subkits">🔓 Включает все возможности <strong>Sniper Lite</strong> (+ /kit sniperlite)</div>
+                <button class="pay-btn" data-kit="Sniper Pro" data-kits-list="/kit sniperpro + /kit sniperlite" data-price="249">🔥 Купить SNIPER PRO</button>
+            </div>
+
             <!-- SHERIFF — СИНИЙ -->
             <div class="card card-sheriff">
                 <div class="card-title">SHERIFF</div>
@@ -228,10 +263,10 @@
                     <li>🏷️ Префикс <strong>[Sheriff]</strong></li>
                     <li>🔫 Точный револьвер</li>
                 </ul>
-                <button class="pay-btn" data-kit="Sheriff" data-price="79">⭐ Купить SHERIFF</button>
+                <button class="pay-btn" data-kit="Sheriff" data-kits-list="/kit sheriff" data-price="79">⭐ Купить SHERIFF</button>
             </div>
 
-            <!-- SNIPER — ФИОЛЕТОВЫЙ -->
+            <!-- SNIPER (OLD) — ФИОЛЕТОВЫЙ -->
             <div class="card card-sniper">
                 <div class="card-title">SNIPER</div>
                 <div class="price">149 <span>₽</span></div>
@@ -242,7 +277,7 @@
                     <li>🎯 Снайперская винтовка</li>
                 </ul>
                 <div class="subkits">🔓 Включает <strong>/kit sheriff</strong> (КД 3ч)</div>
-                <button class="pay-btn" data-kit="Sniper" data-price="149">🎯 Купить SNIPER</button>
+                <button class="pay-btn" data-kit="Sniper" data-kits-list="/kit sniper + /kit sheriff" data-price="149">🎯 Купить SNIPER</button>
             </div>
 
             <!-- DEADZONE — КРАСНЫЙ -->
@@ -256,7 +291,7 @@
                     <li>💀 Легендарный набор</li>
                 </ul>
                 <div class="subkits">🔓 Включает <strong>/kit sniper</strong> (6ч) + <strong>/kit sheriff</strong> (3ч)</div>
-                <button class="pay-btn" data-kit="DeadZone" data-price="300">💀 Купить DEADZONE</button>
+                <button class="pay-btn" data-kit="DeadZone" data-kits-list="/kit deadzone + /kit sniper + /kit sheriff" data-price="300">💀 Купить DEADZONE</button>
             </div>
         </div>
 
@@ -269,7 +304,7 @@
             <h2>✅ ОПЛАЧЕНО!</h2>
             <p>Привилегия <strong id="modalKitName">Sheriff</strong> активирована!</p>
             <p>Steam ID добавлен в группу.</p>
-            <p>🎁 Доступны киты: <span id="modalKits">/kit sheriff</span></p>
+            <p>🎁 Доступные киты: <span id="modalKitsList">/kit sheriff</span></p>
             <button class="close-modal">Закрыть</button>
         </div>
     </div>
@@ -277,25 +312,17 @@
     <script>
         const modal = document.getElementById('modal');
         const modalKitName = document.getElementById('modalKitName');
-        const modalKits = document.getElementById('modalKits');
-
-        function getKitsText(kit) {
-            switch(kit) {
-                case 'Sheriff': return '/kit sheriff';
-                case 'Sniper': return '/kit sniper + /kit sheriff';
-                case 'DeadZone': return '/kit deadzone + /kit sniper + /kit sheriff';
-                default: return '/kit sheriff';
-            }
-        }
+        const modalKitsList = document.getElementById('modalKitsList');
 
         document.querySelectorAll('.pay-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const kit = btn.getAttribute('data-kit');
+                const kitsList = btn.getAttribute('data-kits-list');
                 const price = btn.getAttribute('data-price');
                 
                 modalKitName.textContent = kit;
-                modalKits.textContent = getKitsText(kit);
+                modalKitsList.textContent = kitsList;
                 modal.classList.add('active');
                 
                 console.log(`[ТЕСТ] Оплачен ${kit} за ${price} ₽`);
