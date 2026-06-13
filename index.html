@@ -52,17 +52,27 @@
         .card {
             background: #11161f;
             border-radius: 32px;
-            padding: 32px 24px 40px;
+            padding: 32px 24px 24px;
             width: 320px;
             text-align: center;
             transition: transform 0.25s ease;
             border: 1px solid #232a36;
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 580px;
         }
 
         .card:hover {
             transform: translateY(-8px);
             border-color: #facc15;
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-sheriff { border-top: 5px solid #3b82f6; }
@@ -156,7 +166,7 @@
             border: none;
             cursor: pointer;
             transition: 0.2s;
-            margin-top: 10px;
+            margin-top: auto;
         }
         .card-sheriff .pay-btn { background: #1e3a8a; }
         .card-sniper-lite .pay-btn { background: #0e5e42; }
@@ -228,88 +238,112 @@
         <div class="cards-grid">
             <!-- SHERIFF — СИНИЙ -->
             <div class="card card-sheriff">
-                <div class="card-title">SHERIFF</div>
-                <div class="price">79 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>3 часа</strong></div>
-                <ul class="features">
-                    <li>🎁 Команда <strong>/kit sheriff</strong></li>
-                    <li>🏷️ Префикс <strong>[Sheriff]</strong></li>
-                    <li>🔫 Точный револьвер</li>
-                </ul>
+                <div class="card-content">
+                    <div>
+                        <div class="card-title">SHERIFF</div>
+                        <div class="price">79 <span>₽</span></div>
+                        <div class="cooldown">⏱️ КД: <strong>3 часа</strong></div>
+                        <ul class="features">
+                            <li>🎁 Команда <strong>/kit sheriff</strong></li>
+                            <li>🏷️ Префикс <strong>[Sheriff]</strong></li>
+                            <li>🔫 Точный револьвер</li>
+                        </ul>
+                    </div>
+                </div>
                 <button class="pay-btn" data-kit="Sheriff" data-kits-list="/kit sheriff" data-price="79">⭐ Купить SHERIFF</button>
             </div>
 
             <!-- SNIPER LITE — ЗЕЛЁНЫЙ -->
             <div class="card card-sniper-lite">
-                <div class="card-title">SNIPER LITE</div>
-                <div class="price">149 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>4 часа</strong></div>
-                <ul class="features">
-                    <li>🎁 Команда <strong>/kit sniperlite</strong></li>
-                    <li>🏷️ Префикс <strong>[Stalker]</strong></li>
-                    <li>🔭 Private + Легкая броня</li>
-                    <li>🌿 Тактический разведчик</li>
-                </ul>
-                <div class="subkits">❌ Не включает старшие наборы</div>
+                <div class="card-content">
+                    <div>
+                        <div class="card-title">SNIPER LITE</div>
+                        <div class="price">149 <span>₽</span></div>
+                        <div class="cooldown">⏱️ КД: <strong>4 часа</strong></div>
+                        <ul class="features">
+                            <li>🎁 Команда <strong>/kit sniperlite</strong></li>
+                            <li>🏷️ Префикс <strong>[Stalker]</strong></li>
+                            <li>🔭 Private + Легкая броня</li>
+                            <li>🌿 Тактический разведчик</li>
+                        </ul>
+                        <div class="subkits">❌ Не включает старшие наборы</div>
+                    </div>
+                </div>
                 <button class="pay-btn" data-kit="Sniper Lite" data-kits-list="/kit sniperlite" data-price="149">🌿 Купить SNIPER LITE</button>
             </div>
 
             <!-- SNIPER PRO — ФИОЛЕТОВЫЙ -->
             <div class="card card-sniper-pro">
-                <div class="card-title">SNIPER PRO</div>
-                <div class="price">249 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>4 часа</strong></div>
-                <ul class="features">
-                    <li>🎁 Команда <strong>/kit sniperpro</strong></li>
-                    <li>🏷️ Префикс <strong>[Reaper]</strong></li>
-                    <li>💀 CSO-85 + RIOT броня</li>
-                    <li>🏆 Тяжелая артиллерия</li>
-                </ul>
-                <div class="subkits">🔓 Включает все возможности <strong>Sniper Lite</strong></div>
+                <div class="card-content">
+                    <div>
+                        <div class="card-title">SNIPER PRO</div>
+                        <div class="price">249 <span>₽</span></div>
+                        <div class="cooldown">⏱️ КД: <strong>4 часа</strong></div>
+                        <ul class="features">
+                            <li>🎁 Команда <strong>/kit sniperpro</strong></li>
+                            <li>🏷️ Префикс <strong>[Reaper]</strong></li>
+                            <li>💀 CSO-85 + RIOT броня</li>
+                            <li>🏆 Тяжелая артиллерия</li>
+                        </ul>
+                        <div class="subkits">🔓 Включает <strong>Sniper Lite</strong></div>
+                    </div>
+                </div>
                 <button class="pay-btn" data-kit="Sniper Pro" data-kits-list="/kit sniperpro + /kit sniperlite" data-price="249">🔥 Купить SNIPER PRO</button>
             </div>
 
             <!-- RAID LITE — ОРАНЖЕВЫЙ -->
             <div class="card card-raid-lite">
-                <div class="card-title">RAID LITE</div>
-                <div class="price">199 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>8 часов</strong></div>
-                <ul class="features">
-                    <li>🎁 Команда <strong>/kit raidlite</strong></li>
-                    <li>🏷️ Префикс <strong>[Raider]</strong></li>
-                    <li>🧨 Asset + Bisey + Double Grenade</li>
-                    <li>🔨 Лёгкий штурм</li>
-                </ul>
-                <div class="subkits">❌ Не включает старшие наборы</div>
+                <div class="card-content">
+                    <div>
+                        <div class="card-title">RAID LITE</div>
+                        <div class="price">199 <span>₽</span></div>
+                        <div class="cooldown">⏱️ КД: <strong>8 часов</strong></div>
+                        <ul class="features">
+                            <li>🎁 Команда <strong>/kit raidlite</strong></li>
+                            <li>🏷️ Префикс <strong>[Raider]</strong></li>
+                            <li>🧨 Asset + Bisey + Double Grenade</li>
+                            <li>🔨 Лёгкий штурм</li>
+                        </ul>
+                        <div class="subkits">❌ Не включает старшие наборы</div>
+                    </div>
+                </div>
                 <button class="pay-btn" data-kit="RAID Lite" data-kits-list="/kit raidlite" data-price="199">🧨 Купить RAID LITE</button>
             </div>
 
             <!-- RAID PRO — КРАСНЫЙ (Hermes + 3 HE, включает RAID Lite) -->
             <div class="card card-raid-pro">
-                <div class="card-title">RAID PRO</div>
-                <div class="price">349 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>24 часа</strong></div>
-                <ul class="features">
-                    <li>🎁 Команда <strong>/kit raidpro</strong></li>
-                    <li>🏷️ Префикс <strong>[Destroyer]</strong></li>
-                    <li>💣 <strong>Hermes + 3 HE патрона</strong></li>
-                    <li>🎯 Тяжелая артиллерия</li>
-                </ul>
-                <div class="subkits">🔓 Включает все возможности <strong>RAID LITE</strong></div>
+                <div class="card-content">
+                    <div>
+                        <div class="card-title">RAID PRO</div>
+                        <div class="price">349 <span>₽</span></div>
+                        <div class="cooldown">⏱️ КД: <strong>24 часа</strong></div>
+                        <ul class="features">
+                            <li>🎁 Команда <strong>/kit raidpro</strong></li>
+                            <li>🏷️ Префикс <strong>[Destroyer]</strong></li>
+                            <li>💣 <strong>Hermes + 3 HE патрона</strong></li>
+                            <li>🎯 Тяжелая артиллерия</li>
+                        </ul>
+                        <div class="subkits">🔓 Включает <strong>RAID LITE</strong></div>
+                    </div>
+                </div>
                 <button class="pay-btn" data-kit="RAID Pro" data-kits-list="/kit raidpro + /kit raidlite" data-price="349">💀 Купить RAID PRO</button>
             </div>
 
             <!-- DEADZONE — ЗОЛОТОЙ (549₽, включает Sniper Lite + RAID Lite) -->
             <div class="card card-deadzone">
-                <div class="card-title">DEADZONE</div>
-                <div class="price">549 <span>₽</span></div>
-                <div class="cooldown">⏱️ КД: <strong>12 часов</strong></div>
-                <ul class="features">
-                    <li>🎁 Команда <strong>/kit deadzone</strong></li>
-                    <li>🏷️ Префикс <strong>[DeadZone]</strong></li>
-                    <li>💀 Легендарный набор</li>
-                </ul>
-                <div class="subkits">🔓 Включает <strong>Sniper Lite + RAID Lite</strong></div>
+                <div class="card-content">
+                    <div>
+                        <div class="card-title">DEADZONE</div>
+                        <div class="price">549 <span>₽</span></div>
+                        <div class="cooldown">⏱️ КД: <strong>12 часов</strong></div>
+                        <ul class="features">
+                            <li>🎁 Команда <strong>/kit deadzone</strong></li>
+                            <li>🏷️ Префикс <strong>[DeadZone]</strong></li>
+                            <li>💀 Легендарный набор</li>
+                        </ul>
+                        <div class="subkits">🔓 Включает <strong>Sniper Lite + RAID Lite</strong></div>
+                    </div>
+                </div>
                 <button class="pay-btn" data-kit="DeadZone" data-kits-list="/kit deadzone + /kit sniperlite + /kit raidlite" data-price="549">👑 Купить DEADZONE</button>
             </div>
         </div>
